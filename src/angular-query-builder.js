@@ -5,21 +5,22 @@
           restrict: 'E',
           scope: {
               group: '=',
-              fields: '='
+              fields: '=',
+              labels: '='
           },
           template: ''+
               '<div class="alert alert-warning alert-group">'+
               '    <div class="form-inline">'+
               '        <select ng-options="o.name as o.name for o in operators" ng-model="group.operator" class="form-control input-sm"></select>'+
-              '        <button style="margin-left: 5px" ng-click="addCondition()" class="btn btn-sm btn-success"><span class="glyphicon glyphicon-plus-sign"></span> Add Condition</button>'+
-              '        <button style="margin-left: 5px" ng-click="addGroup()" class="btn btn-sm btn-success"><span class="glyphicon glyphicon-plus-sign"></span> Add Group</button>'+
-              '        <button style="margin-left: 5px" ng-click="removeGroup()" class="btn btn-sm btn-danger"><span class="glyphicon glyphicon-minus-sign"></span> Remove Group</button>'+
+              '        <button style="margin-left: 5px" ng-click="addCondition()" class="btn btn-sm btn-success"><span class="glyphicon glyphicon-plus-sign"></span> {{labels.addCondition}}</button>'+
+              '        <button style="margin-left: 5px" ng-click="addGroup()" class="btn btn-sm btn-success"><span class="glyphicon glyphicon-plus-sign"></span> {{labels.addGroup}}</button>'+
+              '        <button style="margin-left: 5px" ng-click="removeGroup()" class="btn btn-sm btn-danger"><span class="glyphicon glyphicon-minus-sign"></span> {{labels.removeGroup}}</button>'+
               '    </div>'+
               '    <div class="group-conditions">'+
               '        <div ng-repeat="rule in group.rules | orderBy:\'index\'" class="condition">'+
               '            <div ng-switch="rule.hasOwnProperty(\'group\')">'+
               '                <div ng-switch-when="true">'+
-              '                    <query-builder group="rule.group" fields="fields"></query-builder>'+
+              '                    <query-builder group="rule.group" fields="fields" labels="labels"></query-builder>'+
               '                </div>'+
               '                <div ng-switch-default="ng-switch-default">'+
               '                    <div class="form-inline">'+
